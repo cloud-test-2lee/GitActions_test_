@@ -48,5 +48,20 @@ jobs:
         id: image-push
         run: |
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+  
+      #- name: Checkout for Kustomize Repository
+        #uses: actions/checkout@v2
+        #with:
+          #repository: Leeeuijooo/Kustomize_test
+          #ref: main
+          #token: ${{ secrets.ACTION_TOKEN }}
+          #path: Kustomize_test
+
+  #kustomize:
+    #runs-on: ubuntu-latest*/
+
+
+
+
 
 
