@@ -65,13 +65,9 @@ jobs:
       - name: Update k8s resource
         run: |
           pwd
-          cd Kustomize_test/overlays/dev/
-          echo \${{ steps.login-ecr.outputs.registry }}/\${{ env.ECR_REPOSITORY }}
-          echo \${{ steps.login-ecr.outputs.registry }}/\${{ env.ECR_REPOSITORY }}:$IMAGE_TAG
-          kustomize edit set image \${{ steps.login-ecr.outputs.registry }}/\${{ env.ECR_REPOSITORY }}=\${{ steps.login-ecr.outputs.registry }}/\${{ env.ECR_REPOSITORY }}:$IMAGE_TAG
-          cat kustomization.yml
-          kustomize build .
-
+          cd Kustomize_test/resources/
+          sed -i "s|${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:.*|${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}|" sb-deploy.yml
+          
       - name: Commit Manifest files
         run: |
           cd Kustomize_test
