@@ -53,9 +53,6 @@ jobs:
         run: |
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
-  edit-manfiestfiles: # 스테이지 2
-    runs-on: ubuntu-latest
-    steps:
       - name: Checkout for Kustomize repository
         uses: actions/checkout@v2
         with:
