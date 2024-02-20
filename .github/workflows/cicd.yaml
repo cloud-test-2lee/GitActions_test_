@@ -59,7 +59,7 @@ jobs:
           # kubernetes yaml 파일 저장
           repository: Leeeuijooo/Kustomize_test
           ref: main
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ACTION_TOKEN }}
           path: Kustomize_test
 
       - name: Update k8s resource
@@ -78,10 +78,8 @@ jobs:
           git config --global user.name "euijoo"
           git add .
           git commit -m "Update Manifest file Image Tag $IMAGE_TAG"
-          git remote set-url origin https://x-access-token:${GIT_AUTH_TOKEN}@github.com/Leeeuijooo/Kustomize_test.git
           git push -u origin main
-        env:
-          GIT_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
 
 
 
