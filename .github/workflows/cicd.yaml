@@ -59,7 +59,7 @@ jobs:
           # kubernetes yaml 파일 저장
           repository: Leeeuijooo/Kustomize_test
           ref: main
-          token: ${{ secrets.ACTION_TOKEN }}
+          token: ${{ secrets.ACTION_TOKEN }} # Repository Token 은 미리 발급받야아합니다.
           path: Kustomize_test
 
       - name: Update k8s resource
