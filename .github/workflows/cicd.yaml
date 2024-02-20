@@ -79,6 +79,8 @@ jobs:
           git add .
           git commit -m "Update Manifest file Image Tag $IMAGE_TAG"
           git push -u origin main
+        env:
+          GIT_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
 
