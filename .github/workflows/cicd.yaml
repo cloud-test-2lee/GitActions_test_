@@ -76,6 +76,7 @@ jobs:
           cd Kustomize_test
           git config --global user.email "euijoo3233@gmail.com"
           git config --global user.name "euijoo"
+          git add .
           git commit -m "Update Manifest file Image Tag $IMAGE_TAG"
           git push -u origin main
 
