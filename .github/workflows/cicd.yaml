@@ -78,6 +78,7 @@ jobs:
           git config --global user.name "euijoo"
           git add .
           git commit -m "Update Manifest file Image Tag $IMAGE_TAG"
+          git remote set-url origin https://x-access-token:${GIT_AUTH_TOKEN}@github.com/Leeeuijooo/Kustomize_test.git
           git push -u origin main
         env:
           GIT_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
