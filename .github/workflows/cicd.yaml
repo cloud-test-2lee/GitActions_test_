@@ -36,7 +36,7 @@ jobs:
         run: |
           echo "ECR_REGISTRY=${{ steps.login-ecr.outputs.registry }}" >> $GITHUB_ENV
           echo "ECR_REPOSITORY=ejl-repo" >> $GITHUB_ENV
-          echo "IMAGE_TAG=${{ github.run_number }}" >> $GITHUB_ENV
+          echo "IMAGE_TAG=${{ github.sha }}" >> $GITHUB_ENV
 
       - name: Set up Docker buildx
         uses: docker/setup-buildx-action@v1
@@ -65,8 +65,10 @@ jobs:
       - name: Update k8s resource
         run: |
           pwd
-          cd Kustomize_test/resources/
-          sed -i "s|${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:.*|${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}|" sb-deploy.yml
+          cd Kustomize_test/overlays/dev
+          echo \${{ steps.login-ecr.outputs.registry }}/\${{ env.ECR_REPOSITORY }}:$IMAGE_TAG
+          kustomize edit set image \${{ steps.login-ecr.outputs.registry }}/\${{ env.ECR_REPOSITORY }}=\${{ steps.login-ecr.outputs.registry }}/\${{ env.ECR_REPOSITORY }}:$IMAGE_TAG
+          cat kustomization.yml
 
       - name: Commit Manifest files
         run: |
