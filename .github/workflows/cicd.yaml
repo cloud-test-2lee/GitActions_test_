@@ -78,6 +78,7 @@ jobs:
           git add .
           git commit -m "Update Manifest file Image Tag $IMAGE_TAG"
           git push -u origin main
+          git pull origin main
 
       - name: action-slack
         uses: 8398a7/action-slack@v3
