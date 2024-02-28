@@ -61,7 +61,7 @@ jobs:
       - name: Docker build
         id: build-image
         run: |
-          docker buildx build --platform=linux/amd64,linux/arm64 \
+          docker buildx build --platform linux/amd64,linux/arm64 \
             -f Dockerfile \
             -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
             
