@@ -35,7 +35,7 @@ jobs:
         id: set-variable
         run: |
           echo "ECR_REGISTRY=${{ steps.login-ecr.outputs.registry }}" >> $GITHUB_ENV
-          echo "ECR_REPOSITORY=ejl-repo" >> $GITHUB_ENV
+          echo "ECR_REPOSITORY=lee-repo" >> $GITHUB_ENV
           echo "IMAGE_TAG=${{ github.sha }}" >> $GITHUB_ENV
 
       - name: Set up Docker buildx
