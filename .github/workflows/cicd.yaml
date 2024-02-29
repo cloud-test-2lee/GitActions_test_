@@ -66,11 +66,6 @@ jobs:
             -f Dockerfile \
             -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
 
-      - name: taging
-        id: taging-image
-        run: |
-          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-
       - name: Docker Image Push
         id: image-push
         run: |
