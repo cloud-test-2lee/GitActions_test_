@@ -64,12 +64,9 @@ jobs:
         run: |
           docker buildx build --platform linux/amd64,linux/arm64 \
             -f Dockerfile \
-            -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+            -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
+            --push .
 
-      - name: Docker Image Push
-        id: image-push
-        run: |
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
       - name: Checkout for Kustomize repository
         uses: actions/checkout@v2
